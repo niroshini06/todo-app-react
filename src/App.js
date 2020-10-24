@@ -13,13 +13,16 @@ class App extends Component {
 		let todosList = this.state.todos.filter((e) => {
 			return id !== e.id;
 		});
+		this.setState({
+			todos: todosList
+		})
 	};
 
 	render() {
 		return (
 			<div className="container ">
 				<h1 className="center blue-text"> Todos's</h1>
-				<Todos todos={this.state.todos} />
+				<Todos todos={this.state.todos} deleteTodo={this.deleteTodo}/>
 			</div>
 		);
 	}
