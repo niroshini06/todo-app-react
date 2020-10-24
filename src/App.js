@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import AddTodo from './AddTodo';
 import './App.css';
 import Todos from './Todos';
+
 class App extends Component {
 	state = {
 		todos: [
@@ -14,15 +16,23 @@ class App extends Component {
 			return id !== e.id;
 		});
 		this.setState({
-			todos: todosList
-		})
+			todos: todosList,
+		});
+	};
+	addNewTodo = (todo) => {
+		todo.id = this.state.todos.length + 1;
+		let todosList = [...this.state.todos, todo];
+		this.setState({
+			todos: todosList,
+		});
 	};
 
 	render() {
 		return (
 			<div className="container ">
 				<h1 className="center blue-text"> Todos's</h1>
-				<Todos todos={this.state.todos} deleteTodo={this.deleteTodo}/>
+				<Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+				<AddTodo addNewTodo={this.addNewTodo} />
 			</div>
 		);
 	}
