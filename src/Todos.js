@@ -5,14 +5,7 @@ const Todos = ({ todos, deleteTodo }) => {
 		todos.map((e) => {
 			return (
 				<div className="collection-item" key={e.id}>
-					<span
-						onClick={() => {
-							deleteTodo(e.id);
-						}}
-					>
-						{' '}
-						{e.content}{' '}
-					</span>
+					<span onClick={() => {deleteTodo(e.id)}}> {e.content} </span>
 				</div>
 			);
 		})
@@ -20,7 +13,7 @@ const Todos = ({ todos, deleteTodo }) => {
 		<p className="center"> 'You have no todos left' </p>
 	);
 
-	return <div className="todos collection">{todosList}</div>;
+	return (<div className="todos collection">{todosList}</div>)
 };
 
 export default Todos;
